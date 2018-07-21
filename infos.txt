@@ -1,5 +1,0 @@
-Esta é sua chave de API
-AIzaSyC_EWlPtikTDFJBpNmae8km0KajUenrAco
-
-cd C:\Projetos\testevagas\final
-sass --watch sass/common.scss:css/common.css --style compressed
