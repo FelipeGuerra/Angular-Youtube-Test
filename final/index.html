@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="App" ng-controller="YoutubeController">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ query }} - Ficticia</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="css/common.css" media="screen" charset="utf-8">
+
+        <!-- <script data-main="scripts/main" src="scripts/require.js"></script> -->
+
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+        <script type="text/javascript" src="scripts/bootstrap.js"></script>
+        <script type="text/javascript" src="scripts/angular.js"></script>
+        <script type="text/javascript" src="scripts/app.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>
+    </head>
+    <body>
+
+        <header>
+            <div class="container">
+                <div class="logo col-xs-6 col-md-2">
+                    <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAAAgCAYAAACGqDMBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDZCNkMyQzlFMzI3MTFFNTkyNUNDMUM5MjBGQjBBMjYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDZCNkMyQ0FFMzI3MTFFNTkyNUNDMUM5MjBGQjBBMjYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowNkI2QzJDN0UzMjcxMUU1OTI1Q0MxQzkyMEZCMEEyNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowNkI2QzJDOEUzMjcxMUU1OTI1Q0MxQzkyMEZCMEEyNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnSz7ewAAAaVSURBVHja7FxNbBtF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" alt="" /></h1>
+                </div>
+                <div class="navigation col-xs-6 col-md-2 pull-right text-right">
+                    <div class="menu pull-right">
+                        <span id="videomenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Menu <i class="fa fa-bars"></i>
+                        </span>
+                        <ul class="dropdown-menu" aria-labelledby="videomenu">
+                            <li><i class="fa fa-star-o"></i> Destaques</li>
+                            <li><i class="fa fa-play-circle-o"></i> Videos</li>
+                        </ul>
+                    </div>
+                    <div class="search pull-right">
+                        <span class="btn-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <form role="form" ng-submit="search()" class="dropdown-menu" aria-labelledby="search">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search by a keyword" ng-model="query" class="input-search">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="app" class="page-content container">
+            <section class="videoplayer col-xs-12 col-md-7" data-id="{{ currentVideoId }}">
+                <h2>Vídeo em Destaque</h2>
+                <div class="video">
+                    <iframe width="560" height="315" ng-if="modal" ng-src="{{ currentVideo }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="video-description">
+                    <h3>{{ currentVideoTitle }}</h3>
+                    <i class="icon-data" data-toggle="tooltip" data-placement="top" title="{{ currentVideoDate }}"></i>
+                    <i class="icon-views" data-toggle="tooltip" data-placement="top" title="{{ currentVideoViews }} views"></i>
+                    <div class="description-content">
+                        {{ currentVideoDesc }}
+                    </div>
+                </div>
+            </section>
+
+            <section class="related-videos col-xs-12 col-md-5">
+                <h2>+ Vídeos</h2>
+
+                <div class="video-list">
+                    <div class="video-list-item" ng-repeat="video in videos | limitTo: paginationLimit()" data-id="{{ video.id }}">
+                        <a href="javascript:void(0)" ng-click="videoOpen(video)">
+                            <div class="thumb">
+                                <img src="{{ video.images.medium.url }}" title="{{ video.title }}" alt="{{ video.title }}">
+                            </div>
+                            <h3>{{ video.title }}</h3>
+                            <i class="icon-views"></i>
+                            <span class="viewsnumber">{{ video.views }} views</span>
+                        </a>
+                    </div>
+
+                    <a href="javascript:void(0)" class="more-videos" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()">CARREGAR MAIS VÍDEOS...</a>
+                </div>
+            </section>
+        </div>
+
+    </body>
+</html>

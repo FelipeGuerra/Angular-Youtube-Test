@@ -1,0 +1,59 @@
+// MIXINS @include font-size(14px);
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+// transition ex.:  @include transition(background-color 1s .5s, color 2s);
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+// box-shadow
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+    -webkit-box-shadow:$top $left $blur $color #{$inset};
+    -moz-box-shadow:$top $left $blur $color #{$inset};
+    box-shadow:$top $left $blur $color #{$inset};
+}
+
+// Breakpoints @include bp-small;
+@mixin bp-large {
+    @media only screen and (max-width: 60em) {
+        @content;
+    }
+}
+
+@mixin bp-medium {
+    @media only screen and (max-width: 40em) {
+        @content;
+    }
+}
+
+@mixin bp-small {
+    @media only screen and (max-width: 30em) {
+        @content;
+    }
+}
+
+// Opacity @include opacity(0.8);
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+// grayscale
+@mixin grayscale_element($value) {
+    -webkit-filter: #{"grayscale(#{$value})"};
+    -moz-filter: #{"grayscale(#{$value})"};
+    filter:#{"grayscale(#{$value})"};
+}

@@ -1,0 +1,38 @@
+// HEADER
+
+header {
+    background-color: $header-bg-color;
+    padding: 15px;
+
+    .navigation {
+        padding: 7px 0;
+        font-size: 16px;
+        cursor: pointer;
+        span.btn-search,
+        span#videomenu {
+        	color: #fff;
+            margin-right: 15px;
+        }
+        .dropdown-menu {
+            padding: 5px;
+            li {
+                line-height: 2em;
+                clear: both;
+                padding: 5px 15px;
+                @include transition(all .3s ease);
+                &:hover {
+                    background: #f0f0f0;
+                    border-radius: 3px;
+                }
+                i {
+                    line-height: 2em;
+                    color: $primary-title-color;
+                    font-size: 23px;
+                    float: left;
+                    line-height: 1.3em;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
